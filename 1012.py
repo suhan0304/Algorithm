@@ -1,8 +1,9 @@
 T = int(input())
 for i in range(T) :
     N, M, K = map(int, input().split())
-    field = [[0] * M]* N
+    ground = [[0 for _ in range(N)] for __ in range(M) ] 
     for j in range(K) :
         y, x = map(int, input().split())
-        field[x][y] = 0
-    print(field)
+        ground[x][y] = 1
+    print(ground)
+    
