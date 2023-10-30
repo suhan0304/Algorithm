@@ -1,19 +1,12 @@
-def solution(MIN, MAX) :
-    answer = MAX - MIN + 1
-    check = [False] * answer
-    i = 2
-    while i*i <= MAX :
-        square_n = i*i
-        remain = 0 if MIN*square_n == 0 else 1
-        j = MIN//square_n + remain
-        while square_n * j <= MAX :
-            if not check[square_n*j-MIN] :
-                check[square_n*j-MIN]=True
-                answer -= 1
-            j += 1
-        i += 1
-    print(answer)
+min, max = map(int, input().split())
 
+answer = max - min + 1
+divisibleByTheSquare = [False] * (max-min+1)
 
-n_min, n_max = map(int, input().split())
-solution(n_min, n_max)
+for i in range(2, int(max**0.5+1)):
+    square = i**2
+    for j in range((((min-1)//square)+1)*square, max+1, square):
+        if not divisibleByTheSquare[j-min] :
+            divisibleByTheSquare[j-min] = True
+            answer -= 1
+print(answer)
