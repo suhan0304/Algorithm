@@ -22,13 +22,27 @@ for i in range(N):
             else:
                 chg_b[i][j] = 1
 
-ans = []
+ans = 64
 for i in range(N - 8 + 1):
     for j in range(M - 8 + 1):
         s_w = s_b = 0
         for k in range(8):
             s_w += sum(chg_w[i + k][j : j + 8])
             s_b += sum(chg_b[i + k][j : j + 8])
-        ans.append(min(s_w, s_b))
+        ans = min(ans, s_w, s_b)
+"""
+import numpy as np
 
-print(min(ans))
+chg_w = np.array(chg_w)
+chg_b = np.array(chg_b)
+
+ans = 64
+for i in range(N - 8 + 1):
+    for j in range(M - 8 + 1):
+        s_w = s_b = 0
+        s_w = np.sum(chg_w[i : i + 8, j : j + 8])
+        s_b = np.sum(chg_b[i : i + 8, j : j + 8])
+        ans = min(ans, s_w, s_b)
+
+"""
+print(ans)
