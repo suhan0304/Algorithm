@@ -1,4 +1,4 @@
-def dfs(graph, v):
+def dfs(graph, v):  # 순환 함수 말고도 stack 형식을 이용해서 구현해낼 수 있다.
     graph[v][v] = -1  # 방문한 노드는 방문했다고 표시
     print(v, end=" ")
     for i in range(1, n + 1):
