@@ -3,38 +3,35 @@ import sys
 sys.setrecursionlimit(10**5)
 
 
-def findCabbage(y, x):
-    if ground[y][x] == 1:
-        ground[y][x] = 0
-        # 상하좌우 순서대로 배추가 있는지 확인 후 0으로 만든다
-        if y > 0 and ground[y - 1][x] == 1:
-            findCabbage(y - 1, x)
-        elif y < N - 1 and ground[y + 1][x] == 1:
-            findCabbage(y + 1, x)
-        elif x > 0 and ground[y][x - 1] == 1:
-            findCabbage(y, x - 1)
-        elif x < M - 1 and ground[y][x + 1] == 1:
-            findCabbage(y, x + 1)
-        return
+def dfs(y, x, ground, m, n):
+    ground[y][x] = 0
+    if 0 <= y - 1 and ground[y - 1][x] == 1:
+        dfs(y - 1, x, ground, m, n)
+    elif y + 1 < m and ground[y + 1][x] == 1:
+        dfs(y + 1, x, ground, m, n)
+    elif 0 <= x - 1 and ground[y][x - 1] == 1:
+        dfs(y, x - 1, ground, m, n)
+    elif x + 1 < n and ground[y][x + 1] == 1:
+        dfs(y, x + 1, ground, m, n)
+    return
 
 
-ans = []
-T = int(input())
-for i in range(T):
-    M, N, K = map(int, input().split())
-    ground = [[0 for _ in range(M)] for __ in range(N)]
-    for j in range(K):
+for _ in range(int(input())):
+    ans = 0
+    arr = []
+    m, n, k = map(int, input().split())
+    ground = [[0 for _ in range(n)] for __ in range(m)]
+    for j in range(k):
         x, y = map(int, input().split())
-        ground[y][x] = 1
+        ground[x][y] = 1
+        arr.append([x, y])
 
-    cnt = 0
-    for y in range(N):
-        for x in range(M):
-            if ground[y][x] == 1:
-                cnt += 1
-                findCabbage(y, x)
+    for i in range(k):
+        arr[i].reverse()
 
-    ans.append(cnt)
+    for x, y in arr:
+        if ground[y][x] == 1:
+            dfs(y, x, ground, m, n)
+            ans += 1
 
-for answer in ans:
-    print(answer)
+    print(ans)
