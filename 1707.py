@@ -12,12 +12,11 @@ def dfs(graph, v, visited, b, bit):
         # print(bit)
         bit[v] = b
         for i in graph[v]:
-            if not visited[i]:
+            if visited[i] and bit[i] == bit[v]:
+                bit[0] = -1
+                return
+            elif not visited[i]:
                 dfs(graph, i, visited, b * -1, bit)
-            else:
-                if bit[i] == bit[v]:
-                    bit[0] = -1
-                    return
         return
 
 
@@ -39,9 +38,6 @@ for ___ in range(T):
             flag = 0
             dfs(graph, i, visited, 1, bit)
     if bit[0] != -1:
-        ans.append("YES")
+        print("YES")
     else:
-        ans.append("NO")
-
-for l in ans:
-    print(l)
+        print("NO")
