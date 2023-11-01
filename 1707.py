@@ -4,40 +4,51 @@ sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 
-def dfs(graph, v, visited, b, bit):
-    if bit[0] == -1:
-        return
-    else:
-        visited[v] = True
-        # print(bit)
-        bit[v] = b
-        for i in graph[v]:
-            if visited[i] and bit[i] == bit[v]:
-                bit[0] = -1
-                return
-            elif not visited[i]:
-                dfs(graph, i, visited, b * -1, bit)
-        return
+def dfs(graph, v, group):
+    visited[v] = group
+    for i in graph[v]:
+        if not visited[i]:
+            flag = dfs(graph, i, -group)
+            if not flag:
+                return False
+        elif visited[i] == visited[v]:
+            return False
+    return True
 
 
-ans = []
-T = int(input())
-for ___ in range(T):
+from collections import deque
+
+
+def bfs(graph, v, group):
+    queue = deque([v])
+    visited[v] = group
+    while queue:
+        n = queue.popleft()
+
+        for i in graph[n]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = -1 * visited[n]
+            elif visited[i] == visited[n]:
+                return False
+    return True
+
+
+K = int(input())
+for _ in range(K):
     V, E = map(int, input().split())
     graph = [[] for _ in range(V + 1)]
+    visited = [False] * (V + 1)
+
     for i in range(E):
         u, v = map(int, input().split())
         graph[u].append(v)
         graph[v].append(u)
 
-    cnt = 0
-    visited = [False] * (V + 1)
-    bit = [0] * (V + 1)
     for i in range(1, V + 1):
         if not visited[i]:
-            flag = 0
-            dfs(graph, i, visited, 1, bit)
-    if bit[0] != -1:
-        print("YES")
-    else:
-        print("NO")
+            result = bfs(graph, i, 1)
+            if not result:
+                break
+
+    print("YES" if result else "NO")
