@@ -1,10 +1,13 @@
+import sys
 import itertools
+
+input = sys.stdin.readline
 
 L, C = map(int, input().split())
 alpha = input().split()
 alpha.sort()
 
-combi = list(itertools.combinations(alpha, L))  # 4개의 원소로 가능한 모든 조합을 생성
+combi = list(itertools.combinations(alpha, L))
 
 ans = []
 
