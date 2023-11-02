@@ -2,15 +2,19 @@ import sys
 
 input = sys.stdin.readline
 
-K = int(input())
+X = int(input())
 
-for X in range(1, K):
-    n = 1
-    m = 0
-    while 1 + int(n * (n - 1) / 2) <= X:
-        n += 1
-    n -= 1
-    m = 1 + int(n * (n - 1) / 2)
-    ans1 = n - (X - m)
-    ans2 = 1 + (X - m)
-    print(str(ans1) + "/" + str(ans2))
+n = 0
+m = 0
+while X > m:
+    n += 1
+    m = int(n * (n + 1) / 2)
+
+if n % 2 == 0:
+    numerator = n - (m - X)
+    denominator = 1 + +(m - X)
+else:
+    numerator = 1 + (m - X)
+    denominator = n - (m - X)
+
+print(str(numerator) + "/" + str(denominator))
