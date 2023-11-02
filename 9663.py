@@ -1,11 +1,14 @@
-n = int(input())
+import sys
+
+n = int(sys.stdin.readline())
 ans = 0
-board = [0] * n
+row = [0] * n
+check = [False] * n
 
 
 def promising(x):
     for i in range(x):
-        if board[x] == board[i] or abs(x - i) == abs(board[x] - board[i]):
+        if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
             return False
     return True
 
@@ -15,11 +18,14 @@ def nqueen(x):
     if x == n:
         ans += 1
         return
-    else:
-        for i in range(n):
-            board[x] = i  # [x, i]에 퀸을 위치
-            if promising(x):
-                nqueen(x + 1)
+    for i in range(n):
+        if check[i]:
+            continue
+        row[x] = i  # [x, i]에 퀸을 위치
+        if promising(x):
+            check[i] = True  # i열 퀸 배치 표시
+            nqueen(x + 1)  # i열에 퀸을 배치시킨 후 다음 열로 이동
+            check[i] = False  # i열 퀸 배치 해제
 
 
 nqueen(0)
