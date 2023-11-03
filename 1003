@@ -1,0 +1,15 @@
+import sys
+
+input = sys.stdin.readline
+
+t = int(input())
+fibo = [[1, 0], [0, 1]]
+n = []
+for _ in range(t):
+    n.append(int(input()))
+
+for i in range(2, max(n) + 1):
+    fibo.append([(fibo[i - 1][j] + fibo[i - 2][j]) for j in range(2)])
+
+for i in n:
+    print(fibo[i][0], fibo[i][1])
