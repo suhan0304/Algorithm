@@ -12,10 +12,6 @@ for _ in range(m):
     if each < min_each:
         min_each = each
 
-ans = 0
-
-ans = ans + (n // 6) * min(min_package, min_each * 6)
-n %= 6
-ans = ans + min(min_package, min_each * n)
+ans = +(n // 6) * min(min_package, min_each * 6) + min(min_package, min_each * (n % 6))
 
 print(ans)
