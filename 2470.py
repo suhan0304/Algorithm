@@ -16,7 +16,7 @@ while left < right:
     gap = solution[left] + solution[right]
     if abs(gap) < min_gap:
         min_gap = abs(gap)
-        ans = [left, right]
+        ans = [solution[left], solution[right]]
         if ans == 0:
             break
     if gap < 0:
