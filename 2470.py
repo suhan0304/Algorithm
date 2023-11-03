@@ -12,7 +12,7 @@ right = n - 1
 min_gap = abs(solution[left] + solution[right])
 ans = [solution[left], solution[right]]
 
-while left <= right:
+while left < right:
     gap = solution[left] + solution[right]
     if abs(gap) < min_gap:
         min_gap = abs(gap)
