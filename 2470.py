@@ -13,13 +13,13 @@ min_gap = abs(solution[left] + solution[right])
 ans = [solution[left], solution[right]]
 
 while left < right:
-    gap = solution[left] + solution[right]
-    if abs(gap) < min_gap:
-        min_gap = abs(gap)
+    sum = solution[left] + solution[right]
+    if abs(sum) < min_gap:
+        min_gap = abs(sum)
         ans = [solution[left], solution[right]]
         if ans == 0:
             break
-    if gap < 0:
+    if sum < 0:
         left += 1
     else:
         right -= 1
