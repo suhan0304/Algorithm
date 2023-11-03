@@ -3,18 +3,20 @@ import sys
 input = sys.stdin.readline
 
 l = int(input())
-
-S = list(map(int, input().split()))
-S.sort()
-
+s = list(map(int, input().split()))
 n = int(input())
+s.sort()
 
-left = 0
-right = len(l) - 1
-for i in range(l - 1):
-    if l[i] < n and n < l[i + 1]:
-        left = l[i]
-        right = l[i + 1]
-        break
-
-print(left, right)
+if n in s:
+    print(0)
+else:
+    left = 0
+    right = 0
+    for x in s:
+        if x < n:
+            left = x
+        elif x > n and right == 0:
+            right = x
+    right -= 1
+    left += 1
+    print((n - left) * (right - n + 1) + (right - n))
