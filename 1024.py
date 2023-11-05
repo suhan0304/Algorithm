@@ -4,18 +4,28 @@ input = sys.stdin.readline
 
 n, l = map(int, input().split())
 
-ans = -1
+ans = []
 while 1:
-    if (n - int(l * (l - 1) / 2)) % l == 0:
-        ans = int((n - int(l * (l - 1) / 2)) / l)
+    x = (n - (l * (l - 1) / 2)) / l
+    if n == 1 and l == 2:
+        ans.append(str(0))
+        ans.append(str(1))
         break
-    elif (n - int(l * (l - 1) / 2)) < 0:
+    if l > n:
+        break
+    if x < 0:
+        break
+    if l > 100:
+        break
+
+    if x == 0 or x == int(x):
+        for i in range(l):
+            ans.append(str(int(x + i)))
         break
     else:
         l += 1
 
-if ans >= 0:
-    for i in range(l):
-        print(ans + i, end=" ")
+if len(ans) > 0:
+    print(" ".join(ans))
 else:
-    print(ans)
+    print(-1)
