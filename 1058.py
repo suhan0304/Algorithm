@@ -12,8 +12,8 @@ for k in range(n):
             if graph[i][j] == "Y" or (graph[i][k] == "Y" and graph[k][j] == "Y"):
                 f[i][j] = 1
 
-res = 0
+ans = 0
 
 for row in f:
-    res = max(res, sum(row))
-print(res)
+    ans = max(ans, sum(row))
+print(ans)
