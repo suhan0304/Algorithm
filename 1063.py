@@ -14,7 +14,7 @@ stone = [ord(s[0]) - ord("A") + 1, int(s[1])]
 # R L B T RT LT RB LB
 dir = ["R", "L", "B", "T", "RT", "LT", "RB", "LB"]
 dx = [1, -1, 0, 0, 1, -1, 1, -1]
-dy = [0, 0, -1, 1, 1, -1, 1, -1]
+dy = [0, 0, -1, 1, 1, 1, -1, -1]
 
 for _ in range(n):
     move = input()[:-1]
@@ -38,5 +38,6 @@ for _ in range(n):
     else:
         king = next_king
 
-    print(king, stone)
-print(king, stone)
+
+print(chr(king[0] + ord("A") - 1) + str(king[1]))
+print(chr(stone[0] + ord("A") - 1) + str(stone[1]))
