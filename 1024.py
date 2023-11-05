@@ -5,6 +5,7 @@ input = sys.stdin.readline
 n, l = map(int, input().split())
 
 ans = []
+
 while 1:
     x = (n - (l * (l - 1) / 2)) / l
     if n == 1 and l == 2:
