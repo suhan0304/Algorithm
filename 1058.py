@@ -35,6 +35,7 @@ for i in range(n):
     # -> 2-친구의 수
     visited = [False] * n
     bfs(graph, i, visited)
+    print(visited, visited.count(True) - 1)
     if ans < visited.count(True) - 1:
         ans = visited.count(True) - 1
 print(ans)
