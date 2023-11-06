@@ -13,7 +13,14 @@ def distance(x1, y1, x2, y2):
 
 
 def check(x1, y1, x2, y2, x3, y3):
-    return 1 if y3 != (y2 - y1) / (x2 - x1) * (x3 - x1) + y1 else -1
+    if x1 == x2 and x2 == x3:
+        return False
+    elif y1 == y2 and y2 == y3:
+        return False
+    if x2 == x1:
+        return True
+    else:
+        return True if y3 != (y2 - y1) / (x2 - x1) * (x3 - x1) + y1 else False
 
 
 if check(xa, ya, xb, yb, xc, yc):
