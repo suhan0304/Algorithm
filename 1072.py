@@ -12,7 +12,7 @@ else:
     l = 1
     r = x - y
     mid = 0
-    while 1:
+    while l <= r:
         mid = (l + r) // 2
         z2 = int(y + mid / x + mid * 100)
         if z + 1 == z2:
