@@ -12,6 +12,7 @@ else:
     l = 1
     r = x - y
     mid = 0
+    print(x, y)
     while l <= r:
         mid = (l + r) // 2
         z2 = int(y + mid / x + mid * 100)
