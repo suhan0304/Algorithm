@@ -9,17 +9,16 @@ if x == y:
     print(-1)
 else:
     # 1씩 했더니 시간초과 그럼 이분탐색 해보자
-    l = 1
-    r = x - y
+    l = y
+    r = x
     mid = 0
-    print(x, y)
     while l <= r:
         mid = (l + r) // 2
-        z2 = int(y + mid / x + mid * 100)
+        z2 = int(l / r * 100)
         if z + 1 == z2:
             break
         elif z + 1 < z2:
-            right = mid - 1
+            r = mid - 1
         elif z + 1 > z2:
-            left = mid + 1
+            l = mid + 1
     print(mid)
