@@ -3,24 +3,17 @@ import sys
 input = sys.stdin.readline
 
 x, y = map(int, input().split())
+z = y * 100 // x
 
-z = int(y / x * 100)
-if x == y:
+if z > 98:
     print(-1)
 else:
-    # 1씩 했더니 시간초과 그럼 이분탐색 해보자
-    l = y
-    r = x
-    z = int(l / r * 100)
-    mid = 0
-    while l <= r:
-        mid = (l + r) // 2
-        z2 = int(l / r * 100)
-        print(l, mid, r, z, z2)
-        if z + 1 == z2:
-            break
-        elif z + 1 < z2:
-            r = mid - 1
-        elif z + 1 > z2:
-            l = mid + 1
-    print(mid)
+    left = 0
+    right = x
+    while left <= right:
+        mid = (left + right) // 2
+        if z < ((y + mid) * 100 // (x + mid)):
+            right = mid - 1
+        else:
+            left = mid + 1
+    print(left)
