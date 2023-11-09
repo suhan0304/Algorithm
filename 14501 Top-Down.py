@@ -4,7 +4,7 @@ import sys
 n = int(input())
 schedule = [list(map(int, sys.stdin.readlinet().split())) for _ in range(n)]
 
-dp = [0 for i in range(n + 1)]
+dp = [0 for _ in range(n + 1)]
 
 for i in range(n - 1, -1, -1):
     if i + schedule[i][0] > n:
