@@ -12,4 +12,4 @@ for i in range(n - 1, -1, -1):
     else:
         dp[i] = max(dp[i + 1], schedule[i][1] + dp[i + schedule[i][0]])
 
-print(dp[-1])
+print(dp[0])
