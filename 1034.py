@@ -13,8 +13,8 @@ max_cnt = 0
 
 for i in range(n):
     zero = 0
-    for n in arr[i]:
-        if n == "0":
+    for c in arr[i]:
+        if c == "0":
             zero += 1
     cnt = 0
     if zero <= k and zero % 2 == k % 2:
