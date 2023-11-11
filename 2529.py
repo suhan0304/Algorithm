@@ -3,8 +3,11 @@ import sys
 input = sys.stdin.readline
 
 K = int(input())
-
 sign = list(input().split())
+
+visited = [0] * 10
+min_ans = ""
+max_ans = ""
 
 
 def check(i, j, k):
@@ -21,7 +24,8 @@ def solve(depth, s):
         if len(min_ans) == 0:
             min_ans = s
         else:
-            max_anx = s
+            max_ans = s
+        return
 
     for i in range(10):
         if not visited[i]:
@@ -31,9 +35,6 @@ def solve(depth, s):
                 visited[i] = False
 
 
-visited = [0] * 10
-min_ans = ""
-max_ans = ""
 solve(0, "")
 print(max_ans)
 print(min_ans)
