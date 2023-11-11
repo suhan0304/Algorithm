@@ -7,18 +7,20 @@ n = int(input())
 
 q = deque()
 
-i = 1
+a = 1
 ans = []
-while i < n:
+for i in range(1, n + 1):
     m = int(input())
-    if i < m:
-        while i <= m:
-            ans.append("+")
-            q.append(i)
-            i += 1
+    while a <= m:
+        ans.append("+")
+        q.append(a)
+        a += 1
     if q.pop() != m:
-        print("NO")
+        ans.append("NO")
+        break
     else:
         ans.append("-")
-
-print(ans)
+if ans[-1] == "NO":
+    print("NO")
+else:
+    print("\n".join(ans))
