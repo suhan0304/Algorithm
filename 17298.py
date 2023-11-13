@@ -18,4 +18,5 @@ for i in range(n - 1, -1, -1):
         ans.append(q[-1])
     q.append(a[i])
 ans.reverse()
+
 print(*ans)
