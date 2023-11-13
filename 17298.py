@@ -21,5 +21,5 @@ for i in range(n - 1, -1, -1):
     else:
         ans.append(q[-1])
     q.append(a[i])
-
-print(ans)
+ans.reverse()
+print(*ans)
