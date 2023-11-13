@@ -1,5 +1,6 @@
 import sys
 from collections import deque
+from collections import Counter
 
 input = sys.stdin.readline
 
@@ -8,10 +9,7 @@ a = list(map(int, input().split()))
 
 q = deque()
 
-cnt = dict()
-for i in range(len(a)):
-    if a[i] not in cnt:
-        cnt[a[i]] = a.count(a[i])
+cnt = Counter(a)
 
 ans = []
 for i in range(n - 1, -1, -1):
