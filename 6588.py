@@ -17,7 +17,4 @@ def eratosthenes_sieve(m):
     return prime
 
 
-IsPrime = [False, False] + [True] * 1000000
-prime = eratosthenes_sieve(1000000)
-
 print(1)
