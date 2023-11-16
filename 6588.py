@@ -1,20 +1,22 @@
 import sys
 
 input = sys.stdin.readline
+M = 10**6
 
+isPrime = set(i for i in range(2, M))
+for i in range(2, int(M**0.5 + 1)):
+    if i in isPrime:
+        isPrime.difference_update(range(i * i, M + 1, i))
 
-def eratosthenes_sieve(m):
-    isPrime = [False, False] + [True] * m
-    for i in range(2, int(m**0.5 + 1)):
-        if isPrime[i]:
-            for j in range(2 * i, m + 1, i):
-                isPrime[j] = False
-    prime = []
-    for i in range(m + 1):
-        if isPrime[i]:
-            prime.append(i)
+while True:
+    n = int(input())
+    if n == 0:
+        break
 
-    return prime
+    for prime in isPrime:
+        if n - prime in isPrime:
+            print(n, "=", prime, "+", n - prime)
+            break
 
-
-print(1)
+    else:
+        print("Goldbach's conjectrue is wrong.")
