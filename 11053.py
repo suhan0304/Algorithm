@@ -6,14 +6,15 @@ n = int(input())
 
 a = list(map(int, input().split()))
 
-ans = [[a[0]]]
+ans = [0] * (n)
+ans[0] = 1
 
-max_len = 1
 for i in range(1, n):
-    for j in range(len(ans)):
-        if ans[j][-1] < a[i]:
-            ans.append(ans[j] + [a[i]])
-            if len(ans[-1]) > max_len:
-                max_len = len(ans[-1])
+    max_len = 1
+    for j in range(i, -1, -1):
+        if a[j] < a[i]:
+            if ans[j] + 1 > max_len:
+                max_len = ans[j] + 1
+    ans[i] = max_len
 
-print(max_len)
+print(max(ans))
