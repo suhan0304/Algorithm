@@ -11,7 +11,7 @@ def eratosthenes_sieve(m):
                 isPrime[j] = False
     prime = []
     for i in range(m + 1):
-        if IsPrime[i]:
+        if isPrime[i]:
             prime.append(i)
 
     return prime
