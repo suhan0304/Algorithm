@@ -8,9 +8,10 @@ for _ in range(n):
 m = max(idx)
 
 ans = [1, 1, 2]
+used = [1, 1, 2]
 
 for i in range(3, m + 1):
-    ans.append(sum(ans[i - 3 : i]))
+    ans.append(sum(ans[i - 3 : i]) - sum[used])
 
 for i in idx:
-    print(ans[i])
+    print(ans[i] % 1000000009)
