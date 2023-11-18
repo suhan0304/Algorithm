@@ -3,7 +3,6 @@ import sys
 input = sys.stdin.readline
 n, m = map(int, input().split())
 a = sorted(list(map(int, input().split())))
-
 ans = set()
 
 
@@ -26,8 +25,5 @@ for i in range(n):
     visited[i] = True
     dfs(b, 1)
     visited[i] = False
-
-ans = sorted(list(ans))
-
-for a in ans:
+for a in sorted(list(ans)):
     print(*a)
