@@ -3,6 +3,7 @@ import sys
 input = sys.stdin.readline
 n, m = map(int, input().split())
 a = sorted(list(map(int, input().split())))
+
 ans = set()
 
 
@@ -13,10 +14,9 @@ def dfs(b, cnt):
 
     for i in range(n):
         if not visited[i]:
-            if b[-1] <= a[i]:
-                visited[i] = True
-                dfs(b + [a[i]], cnt + 1)
-                visited[i] = False
+            visited[i] = True
+            dfs(b + [a[i]], cnt + 1)
+            visited[i] = False
 
 
 visited = [False] * n
@@ -25,5 +25,8 @@ for i in range(n):
     visited[i] = True
     dfs(b, 1)
     visited[i] = False
-for a in sorted(list(ans)):
+
+ans = sorted(list(ans))
+
+for a in ans:
     print(*a)
