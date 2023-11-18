@@ -14,9 +14,10 @@ def dfs(b, cnt):
 
     for i in range(n):
         if not visited[i]:
-            visited[i] = True
-            dfs(b + [a[i]], cnt + 1)
-            visited[i] = False
+            if b[-1] <= a[i]:
+                visited[i] = True
+                dfs(b + [a[i]], cnt + 1)
+                visited[i] = False
 
 
 visited = [False] * n
