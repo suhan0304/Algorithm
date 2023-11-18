@@ -4,13 +4,12 @@ input = sys.stdin.readline
 n, m = map(int, input().split())
 a = sorted(list(map(int, input().split())))
 
-ans = []
+ans = set()
 
 
 def dfs(b, cnt):
     if cnt == m:
-        if b not in ans:
-            ans.append(b)
+        ans.add(tuple(b))
         return
 
     for i in range(n):
@@ -26,6 +25,8 @@ for i in range(n):
     visited[i] = True
     dfs(b, 1)
     visited[i] = False
+
+ans = sorted(list(ans))
 
 for a in ans:
     print(*a)
