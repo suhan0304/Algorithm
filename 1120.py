@@ -1,19 +1,11 @@
-import sys
+a, b = input().split()
 
-input = sys.stdin.readline
+answer = []
+for i in range(len(b) - len(a) + 1):
+    count = 0
+    for j in range(len(a)):
+        if a[j] != b[i + j]:
+            count += 1
+    answer.append(count)
 
-a, b = input().strip().split()
-
-if a in b:
-    print(0)
-elif len(a) == len(b):
-    print(sum(1 for i in range(len(a)) if a[i] == b[i]))
-else:
-    b_1 = a + b[len(a) :]
-    b_2 = b[: len(b) - len(a)] + a
-    print(
-        min(
-            sum(1 for i in range(len(a)) if b_1[i] != b[i]),
-            sum(1 for i in range(len(a)) if b_2[i] != b[i]),
-        )
-    )
+print(min(answer))
