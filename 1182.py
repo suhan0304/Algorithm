@@ -9,24 +9,17 @@ a = list(map(int, input().split()))
 cnt = 0
 
 
-def dfs(b, dsum):
+def dfs(b, idx):
     global cnt
 
-    if dsum == s:
+    if b and sum(b) == s:
         cnt += 1
-        return
 
-    for i in range(n):
-        if not visited[i] and b[-1] <= a[i]:
-            visited[i] = True
-            dfs(b + [a[i]], dsum + a[i])
-            visited[i] = False
+    for i in range(idx, n):
+        b.append(a[i])
+        dfs(b, i + 1)
+        b.pop()
 
 
-visited = [False] * n
-for i in range(n):
-    visited[i] = True
-    dfs([a[i]], a[i])
-    visited[i] = False
-
+dfs([], 0)
 print(cnt)
