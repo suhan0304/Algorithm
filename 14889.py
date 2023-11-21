@@ -42,5 +42,4 @@ for i in range(n) :
     visited[i] = True
     dfs([i], 1)
     visited[i] = False
-
 print(ans)
