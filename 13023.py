@@ -10,10 +10,11 @@ def dfs(graph, v, visited, depth):
         print(1)
         exit()
 
-    visited[v] = True
     for i in graph[v]:
         if not visited[i]:
+            visited[v] = True
             dfs(graph, i, visited, depth + 1)
+            visited[v] = False
     return
 
 
