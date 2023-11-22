@@ -1,17 +1,19 @@
 import sys
 
+sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 
-def dfs(graph, v, visited, cnt):
-    if cnt == n:
-        global ans
-        ans = 1
+# dfs algorithm
+def dfs(graph, v, visited, depth):
+    if depth == 5:
+        print(1)
+        exit()
 
     visited[v] = True
     for i in graph[v]:
         if not visited[i]:
-            dfs(graph, i, visited, cnt + 1)
+            dfs(graph, i, visited, depth + 1)
     return
 
 
@@ -23,11 +25,10 @@ for _ in range(m):
     graph[u].append(v)
     graph[v].append(u)
 
-ans = 0
-visited = [False] * n
-
-for i in range(0, n):
+# solution
+for i in range(n):
+    visited = [False] * n
     if not visited[i]:
         dfs(graph, i, visited, 1)
 
-print(ans)
+print(0)
