@@ -6,8 +6,7 @@ input = sys.stdin.readline
 def dfs(graph, v, visited, cnt):
     if cnt == n:
         global ans
-
-    print(v)
+        ans = 1
 
     visited[v] = True
     for i in graph[v]:
@@ -15,7 +14,8 @@ def dfs(graph, v, visited, cnt):
             dfs(graph, i, visited, cnt + 1)
     return
 
-#input
+
+# input
 n, m = map(int, input().split())
 graph = [[] for _ in range(n)]
 for _ in range(m):
