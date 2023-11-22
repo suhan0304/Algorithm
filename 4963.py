@@ -15,12 +15,15 @@ def dfs(graph, i, j):
         if ni < 0 or m <= ni or nj < 0 or n <= nj:
             continue
 
-        if graph[i][j] == "1":
+        if graph[ni][nj] == "1":
             dfs(graph, ni, nj)
 
 
 while True:
     n, m = map(int, input().split())
+    if n == 0 and m == 0:
+        break
+
     graph = []
 
     for _ in range(m):
@@ -29,13 +32,12 @@ while True:
     arr = []
     for i in range(m):
         for j in range(n):
-            if graph[i][j] == 1:
+            if graph[i][j] == "1":
                 arr.append([i, j])
 
-    ans = 0
+    cnt = 0
     for i, j in arr:
         if graph[i][j] == "1":
             dfs(graph, i, j)
-            ans += 1
-
-    print(ans)
+            cnt += 1
+    print(cnt)
