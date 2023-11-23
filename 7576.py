@@ -9,6 +9,8 @@ graph = [list(map(int, input().split())) for _ in range(n)]
 
 
 def bfs(graph, i, j):
+    global ans
+
     q = deque()
     q.append([0, 0])
 
@@ -22,9 +24,13 @@ def bfs(graph, i, j):
             ni = i + di[d]
             nj = j + dj[d]
 
-        if ni < 0 or n <= ni or nj < 0 or m <= nj:
-            continue
-    return
+            if ni < 0 or n <= ni or nj < 0 or m <= nj:
+                continue
+
+            if graph[ni][nj] == 0:
+                ans += 1
+                graph[ni][nj] = 1
+                q.append([ni, nj])
 
 
 cnt = 0
@@ -36,5 +42,6 @@ for i in range(n):
         if graph[i][j] == 1:
             arr.append([i, j])
 
+ans = 0
 for i, j in arr:
     bfs(graph, i, j)
