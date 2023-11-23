@@ -11,6 +11,8 @@ graph = [list(map(int, input().split())) for _ in range(n)]
 def bfs(graph, i, j):
     global ans
 
+    cnt, depth = 0, 0
+
     q = deque()
     q.append([0, 0])
 
@@ -19,6 +21,8 @@ def bfs(graph, i, j):
 
     while q:
         i, j = q.popleft()
+
+        depth += 1
 
         for d in range(4):
             ni = i + di[d]
@@ -31,6 +35,7 @@ def bfs(graph, i, j):
                 ans += 1
                 graph[ni][nj] = 1
                 q.append([ni, nj])
+    return depth
 
 
 cnt = 0
@@ -42,6 +47,7 @@ for i in range(n):
         if graph[i][j] == 1:
             arr.append([i, j])
 
-ans = 0
+ans, depth = 0, 0
+
 for i, j in arr:
-    bfs(graph, i, j)
+    max(depth, bfs(graph, i, j))
