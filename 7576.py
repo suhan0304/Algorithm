@@ -22,6 +22,8 @@ def bfs(graph, i, j):
             ni = i + di[d]
             nj = j + dj[d]
 
+        if ni < 0 or n <= ni or nj < 0 or m <= nj:
+            continue
     return
 
 
