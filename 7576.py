@@ -21,7 +21,7 @@ def bfs(graph, i, j):
     while q:
         i, j, dist = q.popleft()
 
-        depth = dist
+        depth = max(depth, dist)
         ans += 1
 
         for d in range(4):
@@ -49,7 +49,8 @@ for i in range(n):
 
 ans, depth = 0, 0
 
-for i, j in arr:
-    depth = max(depth, bfs(graph, i, j))
+print(arr)
 
-print(ans, depth)
+bfs()
+
+print(depth)
