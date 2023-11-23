@@ -6,10 +6,8 @@ input = sys.stdin.readline
 
 
 def bfs():
-    dist = [[[0 for _ in range(m)] for _ in range(n)] for _ in range(2)]
-
     q = deque()
-    q.append([0, 0, 0])
+    q.append([0, 0, 0, 0])
 
     di = [1, 0, -1, 0]
     dj = [0, 1, 0, -1]
@@ -17,13 +15,30 @@ def bfs():
     graph[0][0][0], graph[1][0][0] = "-", "-"
 
     while q:
-        i, j, wall = q.popleft()
+        i, j, wall, dist = q.popleft()
 
         if i == n - 1 and j == m - 1:
-            print(dist[i][j][wall])
-            exit
+            print(dist + 1)
+            exit()
 
-    return
+        for d in range(4):
+            ni = i + di[d]
+            nj = j + dj[d]
+
+            if ni < 0 or n <= ni or nj < 0 or m <= nj:
+                continue
+
+            if graph[wall][ni][nj] == "0":
+                graph[wall][ni][nj] = "-"
+                q.append([ni, nj, wall, dist + 1])
+
+            if graph[wall][ni][nj] == "1" and wall == 0:
+                graph[0][ni][nj] = "-"
+                graph[1][ni][nj] = "-"
+
+                q.append([ni, nj, 1, dist + 1])
+
+    print(-1)
 
 
 n, m = map(int, input().split())
