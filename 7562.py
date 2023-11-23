@@ -18,7 +18,7 @@ for _ in range(t):
     dj = [-1, 1, -1, 1, -2, 2, -2, 2]
 
     q.append([x1, y1, 0])
-    visited = []
+    visited = [[False for _ in range(l)] for _ in range(l)]
 
     while q:
         i, j, depth = q.popleft()
@@ -34,6 +34,6 @@ for _ in range(t):
             if ni < 0 or l <= ni or nj < 0 or l <= nj:
                 continue
 
-            if [ni, nj] not in visited:
+            if not visited[ni][nj]:
+                visited[ni][nj] = True
                 q.append([nj, ni, depth + 1])
-                visited.append([ni, nj])
