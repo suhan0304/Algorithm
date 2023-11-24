@@ -5,23 +5,21 @@ input = sys.stdin.readline
 
 
 def bfs():
-    visited = [False] * (n + 1)
-
-    arr = [[] for _ in range(n + 1)]
-
     q = deque()
-    q.append([1, 1])
+    visited = [-1 for _ in range(n + 1)]
+    depth = [set() for _ in range(n + 1)]
+
+    q.append(1)
     visited[1] = True
 
     while q:
-        v, depth = q.popleft()
-        arr[depth].append(v)
-
+        v = q.popleft()
         for i in graph[v]:
-            if not visited[i]:
-                visited[i] = True
-                q.append([i, depth + 1])
-    return arr
+            if visited[i] == -1:
+                visited[i] = visited[v] + 1
+                depth[v].add(i)
+                q.append(i)
+    return depth
 
 
 n = int(input().rstrip())
@@ -32,8 +30,21 @@ for _ in range(n - 1):
     graph[u].append(v)
     graph[v].append(u)
 
-ans = list(map(int, input().rstrip().split()))
+test = list(map(int, input().rstrip().split()))
 
-arr = bfs()
+depth = bfs()
 
-print(arr)
+# print(children)
+
+idx = 1
+for i in test:
+    if idx == n:
+        break
+    depth_length = len(depth[i])
+    test_depth = set(test[idx : idx + depth_length])
+    check_depth = depth[i]
+    if test_depth != check_depth:
+        print(0)
+        exit()
+    idx += depth_length
+print(1)
