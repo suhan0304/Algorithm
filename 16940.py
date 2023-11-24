@@ -14,11 +14,15 @@ def bfs():
     visited[1] = True
 
     while q:
+        while q[0] != ans[len(arr)]:
+            temp = q.popleft()
+            q.append(temp)
+
         v = q.popleft()
         arr.append(v)
 
         for i in graph[v]:
-            if not visited[i] and i == ans[len(arr)]:
+            if not visited[i]:
                 visited[i] = True
                 q.append(i)
     print(arr)
@@ -35,5 +39,3 @@ for _ in range(n - 1):
 ans = list(map(int, input().rstrip().split()))
 
 bfs()
-
-if 
