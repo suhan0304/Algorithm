@@ -4,42 +4,56 @@ sys.setrecursionlimit(10**6)
 
 input = sys.stdin.readline
 
-# 하 우 상 좌
-di = [1, 0, -1, 0]
-dj = [0, 1, 0, -1]
+
+find_route = False
 
 
-def dfs(i, j, start):
-    for d in range(4):
-        ni = i + di[d]
-        nj = j + dj[d]
+def findRing(graph, route, v, visited):
+    global find_route
+    if find_route:
+        return
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:
+            dist[i] = dist[v] + 1
+            findRing(graph, route + [i], i, visited)
+        if visited[i] and dist[v] >= dist[i] + 2:
+            find_route = True
+            print(i, v, route, dist[v], dist[i], dist)
+            for j in route[i : v + 1]:
+                ring[j] = -1
+            return route
 
-        if 0 <= ni < n and 0 <= nj < n and graph[ni][nj] == start:
-            if not visited[ni][nj]:
-                visited[ni][nj] = True
-                dist[ni][nj] = dist[i][j] + 1
-                dfs(ni, nj, start)
-            elif visited[ni][nj] and dist[ni][nj] >= dist[i][j] + 3:
-                print("Yes")
-                exit()
+
+def dfs(graph, v, visited, depth):
+    if ring[v] == -1:
+        return depth
+
+    for i in graph[v]:
+        if not visited[i]:
+            visited[i] = True
+            dfs(graph, i, visited, depth + 1)
 
 
-graph = [[0] * n]
-
+# input
+n = int(input().rstrip())
+graph = [[] * n for _ in range(n)]
 for _ in range(n):
-    graph.append(input().strip())
+    u, v = map(int, input().rstrip().split())
+    u, v = u - 1, v - 1
+    graph[u].append(v)
+    graph[v].append(u)
 
-dist = [[0 for _ in range(n)] for _ in range(n)]
+# find Ring
+dist = [-1] * n
+dist[0] = 1
 
-"""
-visited = [[False] * n for _ in range(n)]
+visited = [False] * n
+ring = [0 for _ in range(n)]
+findRing(graph, [0], 0, visited)
+print(ring)
+
+# solve
 for i in range(n):
-    for j in range(n):
-        if not visited[i][j]:
-            dist[i][j] = 1
-            visited[i][j] = True
-            dfs(i, j, graph[i][j])
-
-            
-print("No")
-"""
+    visited = [False] * n
+    print(dfs(graph, v, visited, 0), end=" ")
