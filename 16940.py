@@ -7,8 +7,7 @@ input = sys.stdin.readline
 def bfs():
     visited = [False] * (n + 1)
 
-    arr = []
-    cnt = [0 for _ in range(n)]
+    arr = [[] for _ in range(n + 1)]
 
     q = deque()
     q.append([1, 1])
@@ -16,14 +15,13 @@ def bfs():
 
     while q:
         v, depth = q.popleft()
-        cnt[depth] += 1
-        arr.append([v, depth])
+        arr[depth].append(v)
 
         for i in graph[v]:
             if not visited[i]:
                 visited[i] = True
                 q.append([i, depth + 1])
-    return arr, cnt
+    return arr
 
 
 n = int(input().rstrip())
@@ -36,7 +34,6 @@ for _ in range(n - 1):
 
 ans = list(map(int, input().rstrip().split()))
 
-arr, cnt = bfs()
+arr = bfs()
 
 print(arr)
-print(cnt)
