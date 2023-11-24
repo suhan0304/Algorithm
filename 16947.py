@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 
 sys.setrecursionlimit(10**6)
 
@@ -20,12 +21,27 @@ def findRing(graph, route, v, visited):
         if visited[i] and dist[v] >= dist[i] + 2:
             find_route = True
             print(i, v, route, dist[v], dist[i], dist)
-            for j in route[i : v + 1]:
+            for j in route[dist[i] : dist[v] + 1]:
                 ring[j] = -1
             return route
 
 
-def dfs(graph, v, visited, depth):
+def bfs(graph, start):
+    q = deque()
+    q.append([start, 0])
+
+    visited = [False] * n
+
+    while q:
+        v, depth = q.popleft()
+        if ring[v] == -1:
+            return depth
+
+        for i in graph[v]:
+            if not visited[i]:
+                visited[i] = True
+                q.append([i, depth + 1])
+
     if ring[v] == -1:
         return depth
 
@@ -46,7 +62,7 @@ for _ in range(n):
 
 # find Ring
 dist = [-1] * n
-dist[0] = 1
+dist[0] = 0
 
 visited = [False] * n
 ring = [0 for _ in range(n)]
@@ -55,5 +71,4 @@ print(ring)
 
 # solve
 for i in range(n):
-    visited = [False] * n
-    print(dfs(graph, v, visited, 0), end=" ")
+    print(bfs(graph, i), end=" ")
