@@ -1,5 +1,7 @@
 import sys
 
+sys.setrecursionlimit(10**6)
+
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
@@ -20,7 +22,6 @@ def dfs(i, j, start):
                 dist[ni][nj] = dist[i][j] + 1
                 dfs(ni, nj, start)
             elif visited[ni][nj] and dist[ni][nj] >= dist[i][j] + 3:
-                print(dist)
                 print("Yes")
                 exit()
 
@@ -36,6 +37,7 @@ visited = [[False] * m for _ in range(n)]
 for i in range(n):
     for j in range(m):
         if not visited[i][j]:
+            dist[i][j] = 1
             visited[i][j] = True
             dfs(i, j, graph[i][j])
 
