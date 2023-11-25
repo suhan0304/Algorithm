@@ -15,6 +15,7 @@ q = deque()
 for i in range(n):
     for j in range(n):
         if graph[i][j] == 1:
+            graph[i][j] = -1
             for d in range(4):
                 ni = i + di[d]
                 nj = j + dj[d]
@@ -25,14 +26,28 @@ for i in range(n):
                     and not visited[ni][nj]
                     and graph[ni][nj] == 0
                 ):
+                    graph[ni][nj] = 1
                     visited[ni][nj] = True
-                    q.append([ni, nj, 1])
+                    q.append([ni, nj])
 
-print("시작 지점들")
-for v in visited:
-    for a in v:
-        print(0 if a else 1, end=" ")
-    print()
+for g in graph:
+    print(g)
 
+while q:
+    i, j = q.popleft()
 
-print(q)
+    for d in range(4):
+        ni = i + di[d]
+        nj = j + dj[d]
+
+        if 0 <= ni < n and 0 <= nj < n:
+            if graph[ni][nj] == 0:
+                q.append([ni, nj])
+                graph[ni][nj] = graph[i][j] + 1
+            elif graph[ni][nj] > 0:
+                for g in graph:
+                    print(g)
+
+                print(i, j, ni, nj)
+                print(graph[i][j] + graph[ni][nj])
+                exit()
