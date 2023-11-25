@@ -40,6 +40,8 @@ for i in range(n):
                             graph[ni][nj] = island_num
                             q.append([ni, nj, island_num])
 
+end = False
+ans = 200
 while q:
     i, j, island = q.popleft()
 
@@ -52,8 +54,11 @@ while q:
                 graph[ni][nj] = island
                 dist[ni][nj] = dist[i][j] + 1
                 visited[ni][nj] = True
-                q.append([ni, nj, island])
+                if not end:
+                    q.append([ni, nj, island])
 
             if visited[ni][nj] and graph[ni][nj] != island:
-                print(dist[i][j] + dist[ni][nj])
-                exit()
+                ans = min(ans, dist[ni][nj] + dist[i][j])
+                end = True
+
+print(ans)
