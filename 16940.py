@@ -33,9 +33,6 @@ for _ in range(n - 1):
 test = list(map(int, input().rstrip().split()))
 
 depth = bfs()
-
-# print(children)
-
 idx = 1
 for i in test:
     if idx == n:
