@@ -11,10 +11,6 @@ max_ans = -10**9
 min_ans = 10**9
 
 def back_tracking(depth, used, s) :
-    for i in range(4) :
-        if used[i] > oper[i] :
-            return
-        
     if depth == sum(oper) :
         global max_ans
         global min_ans
@@ -23,15 +19,21 @@ def back_tracking(depth, used, s) :
         return
 
     for i in range(4) :
+        if used[i]+1 > oper[i] :
+            continue
+
         used[i] += 1
         if i == 0 :
             back_tracking(depth+1, used, s + a[depth+1])
         if i == 1 :
-            back_tracking(depth+1, used, s - a[depth+1])
+            back_tracking(depth+1, used,  s - a[depth+1])
         if i == 2 :
             back_tracking(depth+1, used, s * a[depth+1])
         if i == 3 :
-            back_tracking(depth+1, used, s // a[depth+1])
+            if s < 0 :
+                back_tracking(depth+1, used, -(-s // a[depth+1]))
+            else :
+                back_tracking(depth+1, used, s // a[depth+1])
         used[i] -= 1
 
 used = [0,0,0,0]
