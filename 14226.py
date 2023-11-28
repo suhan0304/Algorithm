@@ -3,13 +3,26 @@ from collections import deque
 input = sys.stdin.readline
 
 s = int(input())
-
-dp = [1000 for _ in range(s+1)]
-dp[s] = 0
-
-for i in range(s-1, 0, -1) :
-    dp[i] = min(dp[i], dp[i+1] + 1)
-    if i*2 <= s :
-        dp[i] = min(dp[i], dp[i*2] + 2)
+visited = [[-1] * (s+1) for i in range(s+1)]
+visited[1][0] = 0
+q = deque()
+q.append((1,0))
+while q :
+    x, c = q.popleft()
+    if x == s :
+        print(visited[x][c])
+        break
+    dx = [c, 0, -1]
+    for i in range(3) :
+        nx = x + dx[i]
         
-print(dp)
+        if nx < 0 or nx > s :
+            continue
+        
+        if visited[nx][x] == -1 and i == 1 :
+            visited[nx][x] = visited[x][c] + 1
+            q.append((nx,x))
+        
+        if visited[nx][c] == -1 and i != 1 :
+            visited[nx][c] = visited[x][c] + 1
+            q.append((nx,c))
