@@ -7,39 +7,35 @@ a = list(map(int, input().split()))
 
 # + - * /
 oper = list(map(int, input().split()))
+max_ans = -10**9
+min_ans = 10**9
 
-
-def back_tracking(idx, k, used, ans):
-    if idx == n:
+def back_tracking(depth, used, s) :
+    for i in range(4) :
+        if used[i] > oper[i] :
+            return
+        
+    if depth == sum(oper) :
         global max_ans
         global min_ans
-        max_ans = max(max_ans, ans)
-        min_ans = min(min_ans, ans)
-
-    if used[k] + 1 > oper[k]:
+        max_ans = max(max_ans, s)
+        min_ans = min(min_ans, s)
         return
 
-    if k == 0:
-        ans += a[idx]
-    elif k == 1:
-        ans -= a[idx]
-    elif k == 2:
-        ans *= a[idx]
-    elif k == 3:
-        ans //= a[idx]
-    used[k] += 1
+    for i in range(4) :
+        used[i] += 1
+        if i == 0 :
+            back_tracking(depth+1, used, s + a[depth+1])
+        if i == 1 :
+            back_tracking(depth+1, used, s - a[depth+1])
+        if i == 2 :
+            back_tracking(depth+1, used, s * a[depth+1])
+        if i == 3 :
+            back_tracking(depth+1, used, s // a[depth+1])
+        used[i] -= 1
 
-    for o in range(4):
-        back_tracking(idx + 1, o, used, ans)
-
-
-max_ans = -1000000000
-min_ans = 1000000000
-
-for k in range(4):
-    ans = a[0]
-    used = [0, 0, 0, 0]
-    back_tracking(1, k, used, ans)
+used = [0,0,0,0]
+back_tracking(0, used, a[0])
 
 print(max_ans)
 print(min_ans)
