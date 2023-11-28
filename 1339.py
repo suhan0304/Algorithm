@@ -8,7 +8,7 @@ max_length = max(len(s) for s in strings)
 
 padded_strings = [s.rjust(max_length) for s in strings]
 
-cnt = [0 for _ in range(10)] 
+cnt = [0 for _ in range(26)] 
 for i in range(max_length) :
     for s in padded_strings :
         if s[i] != ' ' :
