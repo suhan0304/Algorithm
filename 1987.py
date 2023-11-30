@@ -14,9 +14,12 @@ max_ans = 0
 
 def dfs(i, j, visited, depth) :
     global max_ans
+    max_ans = max(depth,max_ans)
+    """
     if depth > max_ans :
-        print(depth, [chr(i+ord('A')) for i in range(26) if visited[i]])
+        #print(depth, [chr(i+ord('A')) for i in range(26) if visited[i]])
         max_ans = depth
+    """
 
     for d in range(4) :
         ni = i + di[d]
@@ -25,8 +28,8 @@ def dfs(i, j, visited, depth) :
         if 0 <= ni < r and 0 <= nj < c and not visited[ord(graph[ni][nj])-ord('A')] :
             visited[ord(graph[ni][nj])-ord('A')] = True
             dfs(ni,nj,visited, depth + 1)
-            visited[ord(graph[ni][nj])-ord('A')] = False
 
 visited[ord(graph[0][0])-ord('A')] = True
 dfs(0, 0, visited, 1)
+
 print(max_ans)
