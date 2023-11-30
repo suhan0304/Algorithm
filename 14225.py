@@ -18,8 +18,6 @@ def dfs(b, idx) :
 
 dfs([], 0)
 
-print(ans)
-
 for i in range(len(ans)) :
     if ans[i] == 0 :
         print(i)
