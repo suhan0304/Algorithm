@@ -14,7 +14,8 @@ for _ in range(n + m) :
 def bfs() :
     visited = [False for _ in range(101)]
     q = deque()
-    q.append([1, 0])
+    q.append([graph[1], 0])
+
     visited[1] = True
     while q :
         i, depth = q.popleft()
@@ -26,6 +27,8 @@ def bfs() :
         for d in range(1,7) :
             ni = i + d
 
-            if 0 <= ni < 101 and not graph[ni] :
+            if 0 <= ni < 101 and not visited[graph[ni]] :
+                visited[graph[ni]] = True
                 q.append([graph[ni], depth+1])
-
+    
+bfs()
