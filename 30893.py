@@ -21,6 +21,9 @@ def dfs(v, player, visited) :
         if not visited[u] :
             visited[u] = True
             if dfs(u, 2 if player == 1 else 1, visited) :
+            
+            else :
+                return
             visited[u] = False
 
     return False
