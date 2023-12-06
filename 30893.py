@@ -13,20 +13,12 @@ for _ in range(N-1) :
     graph[v].append(s)
 
 #dfs
-def dfs(v, player, visited) :
+def dfs(v,  visited) :
     if v == E :
         return True
     
-    for u in graph[v] :
-        if not visited[u] :
-            visited[u] = True
-            if dfs(u, 2 if player == 1 else 1, visited) :
-                visited[u] = False
-            else :
-                return
-
     return False
 
 visited = [False for _ in range(N)]
 visited[S] = True
-dfs(S, 2, visited)
+dfs(S, visited)
