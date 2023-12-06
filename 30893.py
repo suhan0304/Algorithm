@@ -17,6 +17,10 @@ def dfs(v,  visited) :
     if v == E :
         return True
     
+    #아무래도 접근 방식이 잘못된듯
+    #이게 결국 후공이 원할 때 게임을 끝내버리면 나는 절대 못이기는 게임이 되어버림
+    #그러니께 이거는 진행하면서 내가 끝낼 수 있는 상황을 결정할 수 있는지 여부를 확인해야함
+
     return False
 
 visited = [False for _ in range(N)]
