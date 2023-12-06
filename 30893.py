@@ -15,16 +15,15 @@ for _ in range(N-1) :
 #dfs
 def dfs(v, player, visited) :
     if v == E :
-        return
+        return True
     
     for u in graph[v] :
         if not visited[u] :
             visited[u] = True
             if dfs(u, 2 if player == 1 else 1, visited) :
-                print("Can't win")
             visited[u] = False
 
-    return
+    return False
 
 visited = [False for _ in range(N)]
 visited[S] = True
