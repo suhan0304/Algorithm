@@ -15,10 +15,6 @@ for _ in range(N-1) :
 #dfs
 def dfs(v, player, visited) :
     if v == E :
-        if player == 1 :
-            print("First")
-            exit(0)
-        return
     
     for u in graph[v] :
         if not visited[u] :
