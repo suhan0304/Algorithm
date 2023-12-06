@@ -20,7 +20,8 @@ def dfs(v, player, visited) :
     for u in graph[v] :
         if not visited[u] :
             visited[u] = True
-            dfs(u, 2 if player == 1 else 1, visited)
+            if dfs(u, 2 if player == 1 else 1, visited) :
+                print("Can't win")
             visited[u] = False
 
     return
