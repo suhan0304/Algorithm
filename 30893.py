@@ -15,8 +15,10 @@ for _ in range(N-1) :
 #dfs
 def dfs(v, player, visited) :
     if v == E :
-        print("First" if player == 1 else "Second")
-        exit(0)
+        if player == 1 :
+            print("First")
+            exit(0)
+        return
     
     for u in graph[v] :
         if not visited[u] :
@@ -29,4 +31,4 @@ def dfs(v, player, visited) :
 visited = [False for _ in range(N)]
 visited[S] = True
 dfs(S, 2, visited)
- 
+print("Second")
