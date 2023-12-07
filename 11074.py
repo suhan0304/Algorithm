@@ -4,9 +4,10 @@ input = sys.stdin.readline
 
 N, K = map(int, input().rstrip().split())
 
-arr = [int(input().rstrip()) for _ in range(N)]
-arr.sort(reverse=True)
+coin = []
 
+for i in range(N) :
+    coin.append(int(input()))
 def solution(K) :
     ans = 0
     for i in range(0, len(arr)) :
