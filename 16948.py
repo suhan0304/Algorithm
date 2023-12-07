@@ -25,6 +25,7 @@ def bfs() :
         for d in range(6) :
             nr = r + dr[d]
             nc = c + dc[d]
+            
             if 0<=nr<N and 0<=nc<N and visited[nr][nc] == -1 :
                 visited[nr][nc] = visited[r][c] + 1
                 q.append((nr, nc))
