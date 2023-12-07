@@ -25,3 +25,13 @@ while len(pos) >= 2 :
         ans += a + b
     else :
         ans += a * b
+while pos :
+    ans += pos.pop()
+
+while len(neg) >= 2 :
+    if a == 1 or b == 1 or a == 0 or b == 0:
+        ans += a * b
+while neg :
+    ans += neg
+
+print(solution())
