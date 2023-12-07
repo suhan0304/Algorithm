@@ -5,7 +5,7 @@ input = sys.stdin.readline
 N, K = map(int, input().rstrip().split())
 
 arr = list(input().rstrip() for _ in range(N))
-print(arr)
+
 def check(visited) :
     cnt = 0
     for s in arr :
