@@ -9,10 +9,12 @@ coins = []
 for i in range(N) :
     coins.append(int(input()))
 
+coins.sort(reverse=True)
+
 def solution(K) :
     ans = 0
     for coin in coins :
-        if K > coin :
+        if K >= coin :
             ans += K//coin
             K %= coin
         else :
