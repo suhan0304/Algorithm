@@ -20,12 +20,11 @@ max_cnt = 0
 def bk_tr(depth, visited) :
     if depth == K :
         global max_cnt
-        max_cnt = max(check(visited))
+        max_cnt = max(check(visited), max_cnt)
         return
     
     for s in arr :
         for c in s :
-            print(c)
             if visited[char(c)] == 0 :
                 visited[char(c)] = 1
                 bk_tr(depth+1, visited)
