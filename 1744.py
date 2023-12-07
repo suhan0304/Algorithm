@@ -2,10 +2,12 @@ import sys
 
 input = sys.stdin.readline
 
-N = int(input().rstrip())
+N = int(input())
 
-a = []
+pos, neg = [], []
 for _ in range(N) :
-    a.append(input().rstrip())
-
-#경우의 수가 너무 많음
+    k = int(input())
+    if k > 0 :
+        pos.append(k)
+    else :
+        neg.append(k)
