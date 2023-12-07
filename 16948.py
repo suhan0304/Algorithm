@@ -14,7 +14,6 @@ def bfs() :
     q = deque()
     q.append((r1, c1))
     visited[r1][c1] = 0
-    
     while q :
         r, c = q.popleft()
         
