@@ -31,8 +31,7 @@ def solution() :
 
     while len(neg) >= 2 :
         a, b = neg.popleft(), neg.popleft()
-        if a == 1 or b == 1 or a == 0 or b == 0:
-            ans += a * b
+        ans += a * b
     while neg :
         ans += neg.popleft()
     
