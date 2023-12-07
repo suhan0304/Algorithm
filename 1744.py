@@ -8,5 +8,4 @@ a = []
 for _ in range(N) :
     a.append(input().rstrip())
 
-tied = [0 for _ in range(N)]
-
+#경우의 수가 너무 많음
