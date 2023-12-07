@@ -6,16 +6,28 @@ N, K = map(int, input().rstrip().split())
 
 arr = [list(input().rstrip().split() for _ in range(N))]
 
-def solution(cnt) :
-    if cnt == K :
+def check(visited) :
+    cnt = 0
+    for s in arr :
+        for c in s :
+            if visited[char(c)] == 0 :
+                break
+        else :
+            cnt += 1
+    return cnt
+
+def solution(depth, visited) :
+    if depth == K :
+        print(check(visited))
         return
     
     for s in arr :
         for c in s :
             if visited[char(c)] == 0 :
                 visited[char(c)] = 1
-                solution(cnt+1)
-                visited[char(c)] = 1
+                solution(depth+1, visited)
+                visited[char(c)] = 0
+    return
                 
 def char(c) :
     return ord(c) - ord('a')
