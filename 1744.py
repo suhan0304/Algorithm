@@ -18,20 +18,24 @@ neg.sort()
 pos = deque(pos)
 neg = deque(neg)
 
-ans = 0
-while len(pos) >= 2 :
-    a, b= pos.pop() * pos.pop()
-    if a == 1 or b == 1 or a == 0 or b == 0:
-        ans += a + b
-    else :
-        ans += a * b
-while pos :
-    ans += pos.pop()
+def solution() :
+    ans = 0
+    while len(pos) >= 2 :
+        a, b= pos.pop(), pos.pop()
+        if a == 1 or b == 1 or a == 0 or b == 0:
+            ans += a + b
+        else :
+            ans += a * b
+    while pos :
+        ans += pos.pop()
 
-while len(neg) >= 2 :
-    if a == 1 or b == 1 or a == 0 or b == 0:
-        ans += a * b
-while neg :
-    ans += neg
+    while len(neg) >= 2 :
+        a, b = neg.popleft(), neg.popleft()
+        if a == 1 or b == 1 or a == 0 or b == 0:
+            ans += a * b
+    while neg :
+        ans += neg.popleft()
+    
+    return ans
 
 print(solution())
