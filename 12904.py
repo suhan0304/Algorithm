@@ -9,15 +9,15 @@ T = input().rstrip()
 def make_string(st) :
     if st == S :
         print(1)
-        exit()
+        return
 
     if len(st) <= len(S) :
         print(0)
-        exit()
+        return
 
     if st[-1] == 'A' :
         make_string(st[:-1])
     elif st[-1] == 'B' :
-        make_string(st[-1::-1])
-
+        make_string(st[:-1][::-1])
+    
 make_string(T)
