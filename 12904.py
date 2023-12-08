@@ -6,17 +6,16 @@ S = input().rstrip()
 T = input().rstrip()
 
 # 반대로 올라가야됨 
-
-def make_string(s) :
-    if s == T :
+def make_string(st) :
+    if st == T :
         print(1)
-        exit(0)
-    if len(s) == len(T) :
-        return
-    
-    make_string(s + 'A')
-    make_string(s[::-1] + 'B')
+        exit()
 
-make_string(S)
-print(0)
+    if len(st) < T :
+        print(0)
+        exit()
 
+    if st[-1] == 'A' :
+        make_string(st[:-1])
+    elif st[-1] == 'B' :
+        make_string(st[:0:-1])
