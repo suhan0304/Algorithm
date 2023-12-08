@@ -5,6 +5,8 @@ input = sys.stdin.readline
 S = input().rstrip()
 T = input().rstrip()
 
+# 반대로 올라가야됨 
+
 def make_string(s) :
     if s == T :
         print(1)
