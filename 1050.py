@@ -17,4 +17,11 @@ for _ in range(M) :
     cost = 0
     for comb in combination.split('+') :
         cost += int(comb[0]) * ingre[comb[1:]]
-    ingre[
+    if target in potion :
+        potion[target] = min(cost, potion[target])
+    else :
+        potion[target] = cost
+
+for i in ingre :
+    print(i)
+print(potion1)
