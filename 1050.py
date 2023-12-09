@@ -1,27 +1,32 @@
 import sys
-
+from collections import deque
 input = sys.stdin.readline
 
 N, M = map(int,input().rstrip().split())
 
 # input - 재료 & 비용
-ingre = dict() #재료
+material = dict() #재료
 for _ in range(N) :
     name, cost = input().split()
-    ingre[name] = int(cost)
+    material[name] = int(cost)
 
 # input - 조합식
-potion = dict() # 믈약
+combinations = deque()
 for _ in range(M) :
-    target, combination = input().split('=')
+    combinations.append(input().strip().split('='))
+
+while combinations :
+    target, combination = combinations.popleft()
     cost = 0
     for comb in combination.split('+') :
-        cost += int(comb[0]) * ingre[comb[1:]]
-    if target in potion :
-        potion[target] = min(cost, potion[target])
+        if comb not in material
+        cost += int(comb[0]) * material[comb[1:]]
+    if target in material :
+        material[target] = min(cost, material[target])
     else :
-        potion[target] = cost
+        material[target] = cost
 
-for i in ingre :
+for i in material :
     print(i)
-print(potion1)
+for p in material :
+    print(p)
