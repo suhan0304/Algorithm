@@ -29,7 +29,10 @@ while combinations :
         else :
             ingre[target] = cost
 
-for i in ingre :
-    print(i)
-for p in ingre :
-    print(p)
+if 'LOVE' in ingre: 
+    if ingre['LOVE'] > 10 ** 9 :
+        print(1000000001)
+    else :
+        print(ingre['LOVE'])
+else :
+    print(-1)
