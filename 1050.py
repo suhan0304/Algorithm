@@ -24,6 +24,7 @@ for _ in range(M) :
 # 재료1 = 100
 # LOVE = 재료1*5  //LOVE가 500이 되어버림, LOVE가 25가 되도록 해야함
 # 재료1 = 5
+# 풀이 방법을 바꿔야 할듯
 
 while combinations :
     before_cnt = len(combinations)
