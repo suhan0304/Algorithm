@@ -16,18 +16,25 @@ for _ in range(M) :
     combinations.append(input().strip().split('='))
 
 while combinations :
-    target, combination = combinations.popleft()
-    cost = 0
-    for comb in combination.split('+') :
-        if comb[1:] not in ingre :
-            combinations.append([target, combination])
-            break
-        cost += int(comb[0]) * ingre[comb[1:]]
-    else :
-        if target in ingre :
-            ingre[target] = min(cost, ingre[target])
+    before_cnt = len(combinations)
+    for i in range(len(combinations)) :
+        target, combination = combinations.popleft()
+        cost = 0
+        for comb in combination.split('+') :
+            if target == comb[1:] :
+                break
+            if comb[1:] not in ingre :
+                combinations.append([target, combination])
+                break
+            cost += int(comb[0]) * ingre[comb[1:]]
         else :
-            ingre[target] = cost
+            if target in ingre :
+                ingre[target] = min(cost, ingre[target])
+            else :
+                ingre[target] = cost
+    after_cnt = len(combinations)
+    if before_cnt == after_cnt :
+        break
 
 if 'LOVE' in ingre: 
     if ingre['LOVE'] > 10 ** 9 :
