@@ -18,11 +18,6 @@ di = [1, 0, -1, 0]
 dj = [0, 1, 0, -1]
 
 
-#count safe area
-def count_safe_area(graph) :
-    cnt = sum(row.count(0) for row in graph)
-    return cnt
-
 #bfs
 def bfs(graph) :
     q = deque(virus)
@@ -47,6 +42,7 @@ def solution() :
         bfs(graph)
 
         ans = count_safe_area(graph)
+
         if max_ans < ans :
             max_ans = ans
             max_graph = graph.copy()
