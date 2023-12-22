@@ -36,7 +36,7 @@ def bfs(graph) :
 
 #solve
 def solution() :
-    max_ans = 0
+    min_virus = n*m
     walls_comb = list(combinations(empty, 3))
 
     for walls in walls_comb :
@@ -44,16 +44,9 @@ def solution() :
         for wall in walls :
             temp_graph[wall[0]][wall[1]] = 1
     
-        bfs(temp_graph)
+        min_virus = min(min_virus, bfs(temp_graph))
 
-        cnt = sum(g.count(0) for g in temp_graph)
-
-        if cnt == 30:
-            for g in graph :
-                print(g)
-
-        max_ans = max(max_ans, cnt)
-    return max_ans
+    return len(empty)-min_virus
 
 print(solution())
 
