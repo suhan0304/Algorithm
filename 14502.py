@@ -37,27 +37,19 @@ def bfs(graph) :
 #solve
 def solution() :
     max_ans = 0
-    max_graph = []
     walls_comb = list(combinations(empty, 3))
 
     for walls in walls_comb :
-        temp_graph = copy.deepcopy(graph)
         for wall in walls :
             graph[wall[0]][wall[1]] = 1
     
-        bfs(graph)
+        cnt = bfs(graph)
 
-        ans = sum(row.count(0) for row in graph)
+        max_ans = max(max_ans, cnt)
 
-        if max_ans < ans :
-            max_ans = ans
-            max_graph = graph.copy()
-            
         for wall in walls :
             graph[wall[0]][wall[1]] = 0
 
-    #for g in max_graph :
-    #    print(g)
     return max_ans
 
 print(solution())
