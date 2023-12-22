@@ -17,6 +17,7 @@ for i in range(n) :
 di = [1, 0, -1, 0]
 dj = [0, 1, 0, -1]
 
+
 #count safe area
 def count_safe_area(graph) :
     cnt = sum(row.count(0) for row in graph)
