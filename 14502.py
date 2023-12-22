@@ -21,7 +21,7 @@ dj = [0, 1, 0, -1]
 
 
 #bfs
-def bfs(graph) :
+def bfs(graph, min_virus) :
     virus_cnt = 0
     q = deque(virus)
     while q :
@@ -30,7 +30,9 @@ def bfs(graph) :
             ni,nj = i + di[d] ,j + dj[d]
             if 0 <= ni < n and 0 <= nj < m and graph[ni][nj] == 0 :
                 graph[ni][nj] = 2
-                virust_cnt += 1
+                virus_cnt += 1
+                if virus_cnt >= min_virus :
+                    return min_virus
                 q.append([ni, nj])
     return virus_cnt
 
@@ -44,9 +46,9 @@ def solution() :
         for wall in walls :
             temp_graph[wall[0]][wall[1]] = 1
     
-        min_virus = min(min_virus, bfs(temp_graph))
+        min_virus = min(min_virus, bfs(temp_graph, min_virus))
 
-    return len(empty)-min_virus
+    return len(empty)-min_virus-3
 
 print(solution())
 
