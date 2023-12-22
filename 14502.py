@@ -30,7 +30,7 @@ def bfs(graph) :
             ni,nj = i + di[d] ,j + dj[d]
             if 0 <= ni < n and 0 <= nj < m and graph[ni][nj] == 0 :
                 graph[ni][nj] = 2
-                cnt += 1
+                virus_cnt += 1
                 q.append([ni, nj])
     return virus_cnt
 
