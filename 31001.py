@@ -37,7 +37,7 @@ for _ in range(int(Q)) :
             price[i] = price[i] * (100 + num)/100
     elif menu == "6" :
         print(M)
-    elif M == "7" :
+    elif menu == "7" :
         temp_M = M
         for stock in stocks :
             if stocks[stock] != 0 :
