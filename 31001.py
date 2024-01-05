@@ -16,7 +16,7 @@ for _ in range(N) :
     else :
         group[G] = [H]
 
-for _ in range(int(Q)) :
+for _ in range(Q) :
     menu, st, num = input().rstrip().split()
     num = int(num)
     if menu == "1" :
