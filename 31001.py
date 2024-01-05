@@ -1,13 +1,13 @@
 import sys
 input = sys.stdin.readline
 
-N, M, Q = input().rstrip().split()
+N, M, Q = map(int, input().rstrip().split())
 
 group = dict()
 price = dict()
 stocks = dict()
 
-for _ in range(int(N)) :
+for _ in range(N) :
     G, H, P = input().rstrip().split()
     price[H] = int(P)
     stocks[H] = 0
