@@ -7,7 +7,7 @@ group = dict()
 price = dict()
 stocks = dict()
 
-for _ in range(N) :
+for _ in range(int(N)) :
     G, H, P = input().rstrip().split()
     price[H] = int(P)
     stocks[H] = 0
