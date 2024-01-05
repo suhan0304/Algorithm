@@ -29,7 +29,7 @@ for _ in range(int(Q)) :
             M += num * price[st]
     elif menu == "3" :
         price[st] += num
-    elif M == "4" :
+    elif menu == "4" :
         for i in group[st] :
             price[i] += num
     elif M == "5" :
