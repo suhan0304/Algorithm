@@ -15,3 +15,5 @@ for _ in range(N) :
 
 for _ in range(Q) :
     M, I1, I2 = input().rstrip().split()
+    if M == "1" :
+        
