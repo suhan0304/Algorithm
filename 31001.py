@@ -17,8 +17,12 @@ for _ in range(N) :
         group[G] = [H]
 
 for _ in range(Q) :
-    menu, st, num = input().rstrip().split()
-    num = int(num)
+    line = input().strip()
+    if line == "6" or line == "7" :
+        menu = line
+    else :
+        menu, st, num = line.split()
+        num = int(num)
     if menu == "1" :
         if M >= price[st] * num :
             M -= price[st] * num
