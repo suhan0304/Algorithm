@@ -32,10 +32,10 @@ for _ in range(int(Q)) :
     elif menu == "4" :
         for i in group[st] :
             price[i] += num
-    elif M == "5" :
+    elif menu == "5" :
         for i in group[st] :
             price[i] = price[i] * (100 + num)/100
-    elif M == "6" :
+    elif menu == "6" :
         print(M)
     elif M == "7" :
         temp_M = M
