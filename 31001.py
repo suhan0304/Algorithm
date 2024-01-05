@@ -27,7 +27,7 @@ for _ in range(int(Q)) :
         if stocks[st] > num : 
             stocks[st] -= num
             M += num * price[st]
-    elif M == "3" :
+    elif menu == "3" :
         price[st] += num
     elif M == "4" :
         for i in group[st] :
