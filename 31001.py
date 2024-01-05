@@ -28,9 +28,12 @@ for _ in range(Q) :
             M -= price[st] * num
             stocks[st] += num
     elif menu == "2" :
-        if stocks[st] > num : 
-            stocks[st] -= num
+        if stocks[st] >= num : 
             M += num * price[st]
+            stocks[st] -= num
+        elif stocks[st] < num :
+            M += stocks[st] * price[st]
+            stocks[st] = 0
     elif menu == "3" :
         price[st] += num
     elif menu == "4" :
@@ -40,13 +43,13 @@ for _ in range(Q) :
         for i in group[st] :
             price[i] = price[i] * (100 + num)/100
     elif menu == "6" :
-        print(M)
+        print(int(M))
     elif menu == "7" :
         temp_M = M
         for stock in stocks :
             if stocks[stock] != 0 :
                 temp_M += price[stock] * stocks[stock]
-        print(temp_M)
+        print(int(temp_M))
 
 
 
