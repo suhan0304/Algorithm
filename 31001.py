@@ -16,7 +16,7 @@ for _ in range(int(N)) :
     else :
         group[G] = [H]
 
-for _ in range(Q) :
+for _ in range(int(Q)) :
     M, st, num = input().rstrip().split()
     num = int(num)
     if M == "1" :
