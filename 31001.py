@@ -1,7 +1,7 @@
 import sys
 input = sys.stdin.readline
 
-N, M, Q = map(input().rstrip().split())
+N, M, Q = input().rstrip().split()
 
 group = dict()
 price = dict()
