@@ -1,15 +1,16 @@
 import sys
 input = sys.stdin.readline
 
-N, M, Q = map( inut().rstrip().split())
+N, M, Q = map(input().rstrip().split())
 
 group = dict()
 price = dict()
-stock = dict()
+stocks = dict()
 
 for _ in range(N) :
     G, H, P = input().rstrip().split()
-    price[H].append(P))    stock[H] = 0
+    price[H] = int(P)
+    stocks[H] = 0
     if G in group :
         group[G].append(H)
     else :
@@ -21,13 +22,27 @@ for _ in range(Q) :
     if M == "1" :
         if M >= price[st] * num :
             M -= price[st] * num
-            stock[st] += num
+            stocks[st] += num
     elif M == "2" :
-        if stock[st] > num : 
-            stock[st] -= num
+        if stocks[st] > num : 
+            stocks[st] -= num
             M += num * price[st]
     elif M == "3" :
         price[st] += num
     elif M == "4" :
         for i in group[st] :
             price[i] += num
+    elif M == "5" :
+        for i in group[st] :
+            price[i] = price[i] * (100 + num)/100
+    elif M == "6" :
+        print(M)
+    elif M == "7" :
+        temp_M = M
+        for stock in stocks :
+            if stocks[stock] != 0 :
+                temp_M += price[stock] * stocks[stock]
+        print(temp_M)
+
+
+
