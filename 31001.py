@@ -17,13 +17,13 @@ for _ in range(int(N)) :
         group[G] = [H]
 
 for _ in range(int(Q)) :
-    M, st, num = input().rstrip().split()
+    menu, st, num = input().rstrip().split()
     num = int(num)
-    if M == "1" :
+    if menu == "1" :
         if M >= price[st] * num :
             M -= price[st] * num
             stocks[st] += num
-    elif M == "2" :
+    elif menu == "2" :
         if stocks[st] > num : 
             stocks[st] -= num
             M += num * price[st]
