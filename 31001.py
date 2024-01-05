@@ -43,13 +43,10 @@ for _ in range(Q) :
         for i in group[st] :
             price[i] = (price[i] * (100 + num)/100)//10 * 10
     elif menu == "6" :
-        print(M)
+        print(int(M))
     elif menu == "7" :
         temp_M = M
         for stock in stocks :
             if stocks[stock] != 0 :
                 temp_M += price[stock] * stocks[stock]
-        print(temp_M)
-
-
-
+        print(int(temp_M))
