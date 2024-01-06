@@ -14,4 +14,4 @@ for _ in range(N) :
         group[G] = [H]
 
 for _ in range(Q) :
-    M, I1, I2 = map(int, input().rstrip().split())
+    M, I1, I2 = input().rstrip().split()
