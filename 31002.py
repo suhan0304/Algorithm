@@ -4,7 +4,7 @@ input = sys.stdin.readline
 N, K = map(int, input().rstrip().split())
 
 def solution(N, K):
-    graph = [[] * N]
+    graph = [[] for _ in range(N)]
 
     print(graph)
 
