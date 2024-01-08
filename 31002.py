@@ -8,7 +8,12 @@ N, K = map(int, input().rstrip().split())
 if N == 3 :
     print(3)
     exit()
-edges = N*(N-1)//2
+
+if K == 0 :
+    print(N) 
+    exit()
+
+edges = N*(N-1)//2 % NUM
 neighborEdges = (N-2)*2
 
 for _ in range(K-1) :
