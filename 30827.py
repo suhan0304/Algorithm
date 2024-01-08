@@ -3,10 +3,19 @@ input = sys.stdin.readline
 
 N, K = map(int, input().rstrip().split())
 
-meeting = []
+meetings = []
 for _ in range(N) :
-    meeting.append(tuple(map(int,input().rstrip().split())))
+    meetings.append(tuple(map(int,input().rstrip().split())))
+sorted_meetings = sorted(meetings, key=lambda x: (x[1]))
+print(sorted_meetings)
 
-sorted_meeting = sorted(meeting, key=lambda x: (x[0], x[1]))
+meeting_room = {i : 0 for i in range(1, K+1)}
+answer = 0
 
-print(sorted_meeting)
+for meeting in sorted_meetings :
+    start_time, end_time = meeting
+
+    for room in range(1, K+1) :
+        if start_time >= meeting_room[room] :
+            
+
