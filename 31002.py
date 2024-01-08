@@ -2,6 +2,7 @@ import sys
 input = sys.stdin.readline
 
 N, K = map(int, input().rstrip().split())
+dp = []
 
 def solution(N, K):
     graph = [[] for _ in range(N)]
