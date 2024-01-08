@@ -9,8 +9,12 @@ if N == 3 :
     print(3)
     exit()
 
-edges = [N*(N-1)//2]
-neighborEdges = [(N-2)*2]
+edges = N*(N-1)//2
+neighborEdges = (N-2)*2
 
-print(edges)
-print(neighborEdges)
+for _ in range(K-1) :
+    edges = ((neighborEdges * edges) // 2) % NUM
+    print(_, edges)
+    neighborEdges = (neighborEdges-1) * 2
+
+print(edges % NUM)
