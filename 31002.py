@@ -2,13 +2,11 @@ import sys
 input = sys.stdin.readline
 
 N, K = map(int, input().rstrip().split())
-dp = []
+dp = [-1] * (10**9 + 7)
 
 def solution(N, K):
-    graph = [[] for _ in range(N)]
-
     for i in range(K) :
-        
+        N = (N-1) * 2
 
     print(graph)
 
