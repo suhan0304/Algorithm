@@ -6,7 +6,7 @@ N, K = map(int, input().rstrip().split())
 meetings = []
 for _ in range(N) :
     meetings.append(tuple(map(int,input().rstrip().split())))
-sorted_meetings = sorted(meetings, key=lambda x: (x[1]))
+sorted_meetings = sorted(meetings, key=lambda x: (x[1], x[0]))
 #print(sorted_meetings)
 
 meeting_room = {i : 0 for i in range(1, K+1)}
