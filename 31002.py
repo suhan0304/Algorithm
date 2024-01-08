@@ -13,7 +13,6 @@ neighborEdges = (N-2)*2
 
 for _ in range(K-1) :
     edges = ((neighborEdges * edges) // 2) % NUM
-    #print(_, edges)
     neighborEdges = (neighborEdges-1) * 2
 
 print(edges % NUM)
