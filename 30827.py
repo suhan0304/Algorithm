@@ -16,7 +16,7 @@ for meeting in sorted_meetings :
     start_time, end_time = meeting
 
     for room in range(1, K+1) :
-        if start_time >= meeting_room[room] :
+        if start_time > meeting_room[room] :
             meeting_room[room] = end_time
             answer += 1
             break
