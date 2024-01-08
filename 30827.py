@@ -7,7 +7,7 @@ meetings = []
 for _ in range(N) :
     meetings.append(tuple(map(int,input().rstrip().split())))
 sorted_meetings = sorted(meetings, key=lambda x: (x[1]))
-print(sorted_meetings)
+#print(sorted_meetings)
 
 meeting_room = {i : 0 for i in range(1, K+1)}
 answer = 0
@@ -17,5 +17,8 @@ for meeting in sorted_meetings :
 
     for room in range(1, K+1) :
         if start_time >= meeting_room[room] :
-            
+            meeting_room[room] = end_time
+            answer += 1
+            break
 
+print(answer)
