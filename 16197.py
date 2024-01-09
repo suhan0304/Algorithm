@@ -31,3 +31,4 @@ def bfs() :
                 return cnt + 1
             else :
                 continue
+    return -1
