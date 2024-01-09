@@ -39,3 +39,5 @@ if __name__ == "__main__" :
     coin = deque()
     board = []
     temp = []
+    for i in range(n) :
+        board.append(list(input().strip()))
