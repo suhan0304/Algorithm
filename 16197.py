@@ -41,3 +41,6 @@ if __name__ == "__main__" :
     temp = []
     for i in range(n) :
         board.append(list(input().strip()))
+        for j in range(m) :
+            if board[i][j] == "o" :
+                temp.append((i,j))
