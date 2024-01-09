@@ -20,7 +20,6 @@ def bfs():
             ny2 = y2 + dy[i]
 
             if 0 <= nx1 < n and 0 <= ny1 < m and 0 <= nx2 < n and 0 <= ny2 < m:
-                # 벽이라면
                 if board[nx1][ny1] == "#":
                     nx1, ny1 = x1, y1
                 if board[nx2][ny2] == "#":
