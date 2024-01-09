@@ -46,3 +46,5 @@ if __name__ == "__main__" :
                 temp.append((i,j))
 
     coin.append((temp[0][0], temp[0][1], temp[1][0], temp[1][1], 0))
+
+    print(bfs())
