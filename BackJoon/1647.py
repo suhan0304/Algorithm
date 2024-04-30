@@ -16,7 +16,16 @@ def union(a, b) :
         parent[a] = b
 
 n, m = map(int, input().rstrip().split())
-e = [tuple(map(int,input().rstrip().split())) for _ in range(m)]
-e.sort(key = lambda x : x[2])
+edges = [tuple(map(int,input().rstrip().split())) for _ in range(m)]
+edges.sort(key = lambda x : x[2])
 
-parent = []
+parent = list(range(n+1))
+ans = 0
+max_edge = 0
+for a, b, c in edges :
+    if find_root(a) != find_root(b) :
+        union(a, b)
+        ans += c
+        max_edge = c
+
+print(ans-max_edge)
