@@ -18,9 +18,14 @@ stars = [tuple([i] + list(map(int,input().rstrip().split()))) for i in range(n)]
 edges = []
 for i in [1, 2, 3] :
     sort_stars = sorted(stars, key = lambda x : x[i]) 
-    edges = [(abs(star1[i] - star2[i]), star1[0], star2[0]) for star1 ,star2 in zip(sort_stars[:-1], sort_stars[1:])]
+    edges += [(abs(star1[i] - star2[i]), star1[0], star2[0]) for star1 ,star2 in zip(sort_stars[:-1], sort_stars[1:])]
 edges.sort()
 
 ans = 0
 parent = list(range(n+1))
+for dist, star1, star2 in edges :
+    if find(star1) != find(star2) :
+        union(star1, star2)
+        ans += dist
+print(ans)
 
