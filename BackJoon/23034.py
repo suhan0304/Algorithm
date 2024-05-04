@@ -3,22 +3,18 @@ from collections import deque
 input = sys.stdin.readline
 
 def dfs(graph, start, end) :
-    print(start)
-    visited = [False] * (n+1)
-    max_dist = 0
     q = deque([(start, 0)])
+    visited[start] = True
 
     while q :
-        v, _ = q.pop()
+        v, max_dist = q.pop()
         if v == end :
             return max_dist
 
         for nv, nd in graph[v] :
             if not visited[nv] :
-                if max_dist < nd :
-                    max_dist = nd
                 visited[nv] = True
-                q.append((nv, max_dist))
+                q.append((nv, max(max_dist, nd)))
     return
 
 def find(n) :
@@ -53,7 +49,8 @@ for a, b, c in edges :
         mst_graph[b].append((a,c))
 
 q_cnt = int(input())
-
+visited = []
 for _ in range(q_cnt) :
     x, y = map(int,input().rstrip().split())
-    dfs(mst_graph, x, y)
+    visited = [False] * (n+1)
+    print(total_cost - dfs(mst_graph, x, y))
