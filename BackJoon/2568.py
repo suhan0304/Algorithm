@@ -6,7 +6,7 @@ n = int(input())
 arr = [list(map(int, input().rstrip().split())) for _ in range(n)]
 arr.sort(key = lambda x : x[0])
 
-print(arr)
+#print(arr)
 
 LIS = []
 dp = []
@@ -34,6 +34,4 @@ for i in range(len(dp)-1, -1, -1) :
 
 for i, j in arr :
     if j not in save_line :
-        print(i,end =' ')
-
-#print(save_line)
+        print(i)
