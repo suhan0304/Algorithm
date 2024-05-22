@@ -28,7 +28,7 @@ def bfs(rx, ry, bx, by) :
             rx, ry, bx, by = q.popleft()
             if cnt > 10 :
                 print(-1)
-                break
+                return 
             if graph[rx][ry] == 'O' :
                 print(cnt)
                 return
