@@ -2,11 +2,6 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-def check_graph(graph) :
-    for g in graph :
-
-    print()
-
 def move_fish(fish, smell, graph) :
     dx = [0,-1,-1,-1,0,1,1,1]
     dy = [-1,-1,0,1,1,1,0,-1]
@@ -29,8 +24,8 @@ def move_fish(fish, smell, graph) :
                     graph[x][y] -= 1
                     graph[nx][ny] += 1
                     break
-                if nd == d :
-                    fish[i] = [x, y, nd]
+                if (nd+8)%8 == d :
+                    fish[i] = [x, y, (nd+8)%8]
                     break
 
 def bfs(shark, graph) :
@@ -90,18 +85,12 @@ def copy_fish(fish, remember_fish, graph) :
         graph[x][y] += 1
 
 def practice(fish, shark, graph) :
-    check_graph(graph)
     remember_fish = [x for x in fish]       #step1
-    check_graph(graph)
     move_fish(fish, smell, graph)                  #step2
-    check_graph(graph)
     move_shark(fish, smell, shark, graph)                #step3
-    check_graph(graph)
     smell_decrease(graph)                   #step4
-    check_graph(graph)
     copy_fish(fish, remember_fish, graph)   #step5
 
-    check_graph(graph)
 
 fish = []
 m, s = map(int, input().split())
@@ -117,3 +106,5 @@ shark = [sx-1, sy-1]
 
 for _ in range(s) :
     practice(fish, shark, graph)
+
+print(len(fish))
