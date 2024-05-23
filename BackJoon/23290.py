@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 def check_graph(graph) :
     for g in graph :
-        print(*g)
+
     print()
 
 def move_fish(fish, smell, graph) :
@@ -25,7 +25,7 @@ def move_fish(fish, smell, graph) :
                 nd -= 1
                 nx, ny = x+dx[nd], y+dy[nd]
                 if 0 <= nx < 4 and 0 <= ny < 4 and graph[nx][ny] < 100 and smell[nx][ny] == 0:
-                    fish[i] = [nx, ny, d]
+                    fish[i] = [nx, ny, (nd+8)%8]
                     graph[x][y] -= 1
                     graph[nx][ny] += 1
                     break
@@ -58,19 +58,21 @@ def bfs(shark, graph) :
                         new_sum = current_sum + graph[nx][ny] if graph[nx][ny] > 0 else current_sum
                         new_visited = visited + [(nx, ny)]
                         q.append([nx, ny, new_sum, depth + 1, new_visited])
-    print(shark, 'position : ', max_position)
     return max_visited, max_position
 
 def move_shark(fish, smell, shark, graph) :
     path, pos = bfs(shark, graph)
     for x, y in path :
-        if graph[x][y] > 0 :
+        if 0 < graph[x][y] < 100 :
             graph[x][y] = 0
-            smell[x][y] == -2
-
-    for x, y, d in fish :
-        if (x, y) in path :
-            fish.remove([x,y,d])
+            smell[x][y] = -3
+    i = 0
+    while i < len(fish):
+        x, y, d = fish[i]
+        if (x, y) in path:
+            fish.pop(i)
+        else:
+            i += 1
 
     graph[shark[0]][shark[1]] = 0
     graph[pos[0]][pos[1]] = 100
@@ -88,25 +90,18 @@ def copy_fish(fish, remember_fish, graph) :
         graph[x][y] += 1
 
 def practice(fish, shark, graph) :
-    print("#step0 ---")
     check_graph(graph)
     remember_fish = [x for x in fish]       #step1
-    print("#step1 ---")
     check_graph(graph)
     move_fish(fish, smell, graph)                  #step2
-    print("#step2 ---")
     check_graph(graph)
     move_shark(fish, smell, shark, graph)                #step3
-    print("#step3 ---")
     check_graph(graph)
     smell_decrease(graph)                   #step4
-    print("#step4 ---")
     check_graph(graph)
     copy_fish(fish, remember_fish, graph)   #step5
 
-    print("#step5 ---")
     check_graph(graph)
-    print("----- done!-----")
 
 fish = []
 m, s = map(int, input().split())
