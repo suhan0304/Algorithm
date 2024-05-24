@@ -7,15 +7,15 @@ graph = [list(map(int,input().split())) for _ in range(n)]
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
+q =deque()
 
 def bfs(sx, sy) :
     u = []
-    q = deque((sx, sy))
+    q.append((sx, sy))
     u.append((sx, sy))
 
     while q :
         x, y = q.popleft()
-        visited[x][y] = True
 
         for d in range(4) :
             nx = x + dx[d]
