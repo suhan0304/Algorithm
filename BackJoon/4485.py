@@ -2,18 +2,42 @@ import sys
 import heapq
 input = sys.stdin.readline
 
-def dijkstra(arr) :
-    dist = [[sys.maxsize for _ in range(t)] for _ in range(t)]
-    arr[0][0] = 0
-    q = [(0, 0, 0)]
+INF = int(1e9)
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def dijkstra() :
+    q = []
+    heapq.heappush(q, (graph[0][0], 0, 0))
+    dist[0][0] = 0
+
     while q :
-        x, y = heapq.heappop()
+        d, x, y = heapq.heappop()
 
+        if x == t-1 and y == t-1 :
+            print(f'Problem {cnt}: {dist[x][y]}')
+            break
 
+        for di in range(4) :
+            nx = x + dx[di]
+            ny = y + dy[di]
+
+            if 0 <= nx < t and 0 <= ny < t :
+                nd = d + graph[nx][ny]
+                
+                if nd < dist[nx][ny] :
+                    dist[nx][ny] = nd
+                    heapq.heappush(q, (nd, nx, ny))
+
+cnt = 0
 while True :
-    arr = []
     t = int(input())
     if t == 0 :
         break
-    for _ in range(t) :
-        arr.append(list(map(int, input().split())))
+
+    graph = [list(map(int, input().split())) for _ in range(t)]
+    dist = [[INF for _ in range(t)] for _ in range(t)]
+
+    dijkstra
+    cnt += 1
