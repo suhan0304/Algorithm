@@ -13,7 +13,7 @@ def dijkstra() :
     dist[0][0] = 0
 
     while q :
-        d, x, y = heapq.heappop()
+        d, x, y = heapq.heappop(q)
 
         if x == t-1 and y == t-1 :
             print(f'Problem {cnt}: {dist[x][y]}')
@@ -30,7 +30,7 @@ def dijkstra() :
                     dist[nx][ny] = nd
                     heapq.heappush(q, (nd, nx, ny))
 
-cnt = 0
+cnt = 1
 while True :
     t = int(input())
     if t == 0 :
@@ -39,5 +39,5 @@ while True :
     graph = [list(map(int, input().split())) for _ in range(t)]
     dist = [[INF for _ in range(t)] for _ in range(t)]
 
-    dijkstra
+    dijkstra()
     cnt += 1
