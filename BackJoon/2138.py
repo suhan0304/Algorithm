@@ -23,3 +23,7 @@ for i in range(2) :
             cur = before[:]
             ans = 1
             break
+    else :
+        print(ans)
+        exit(0)
+    print(-1)
