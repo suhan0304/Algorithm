@@ -1,28 +1,35 @@
 import sys
 input = sys.stdin.readline
 
-for __ in range(3) :
-    n = int(input())
-    coins = []
-    total = 0
-    for _ in range(n) :
+for _ in range(3):
+    total = 0 
+    coins = [] 
+   
+    for _ in range(int(input())):
         coin, cnt = map(int, input().split())
-        coins.append((coin,cnt))
         total += coin * cnt
-    
-    if total%2 == 1:
+        coins.append([coin, cnt])
+
+    if total % 2 == 1:
         print(0)
         continue
+
     total //= 2
-
     dp = [True] + [False] * total
-    for coin, cnt in coins :
 
-        for n in range(total, coin-1, -1) :
-            if dp[n-coin] :
-                for j in range(cnt) :
-                    if n + coin * j <= total :
+    answer = 0
+    for i in range(len(coins)):
+        coin, cnt = coins[i]
+        for n in range(total, coin-1, -1):
+            if dp[n-coin]:
+                for j in range(cnt):
+                    if n + coin * j <= total:
                         dp[n + coin * j] = True
+                    else:
+                        break
                         
+        if dp[-1]: 
+            answer = 1
+            break
 
-    print(1 if dp[-1] else 0)
+    print(answer)
