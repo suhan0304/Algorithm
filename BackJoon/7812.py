@@ -1,21 +1,23 @@
 import sys
-sys.setrecursionlimit(10**4)
+sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 def dfs1(cur) :
     visited[cur] = True
     for v, w in graph[cur] :
-        if not visited[v] :
-            dfs1(v)
-            cnt[cur] += cnt[v]
-            dp[cur] += w * cnt[v] + dp[v]
+        if visited[v] :
+            continue
+        dfs1(v)
+        cnt[cur] += cnt[v]
+        dp[cur] += w * cnt[v] + dp[v]
 
 def dfs2(cur) :
     visited[cur] = True
     for v, w in graph[cur] :
-        if not visited[v] :
-            dp[v] = dp[cur] - cnt[v] * w + (n - cnt[v]) * w
-            dfs2(v)
+        if visited[v] :
+            continue
+        dp[v] = dp[cur] - cnt[v] * w + (n - cnt[v]) * w
+        dfs2(v)
 
 while True :
     n = (int(input()))
