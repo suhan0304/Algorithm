@@ -1,4 +1,5 @@
 from itertools import combinations, product
+from bisect import bisect_left
 
 def solution(dice):
     dp = {}
@@ -15,15 +16,8 @@ def solution(dice):
         B.sort()
 
         wins = 0
-        for num in A :
-            left, right = 0, len(B) - 1
-            while left <= right :
-                mid = (left + right) // 2
-                if num <= B[mid] :
-                    right = mid - 1
-                else :
-                    left = mid + 1
-            wins += left
+        for num in A:
+            wins += bisect_left(B, num)
 
         dp[wins] = list(A_index_combi)
 
